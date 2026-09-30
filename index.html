@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Cilma 💗</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #e8d5ff,
+                #d8efff
+            );
+            color: #444;
+        }
+
+        /* =========================
+           OPENING SCREEN
+        ========================== */
+
+        #opening {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                #ffb6d5,
+                #c9b6ff
+            );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            z-index: 1000;
+
+            transition: 1s;
+        }
+
+        .opening-box {
+            padding: 30px;
+        }
+
+        .opening-box h1 {
+            color: white;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .opening-box p {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .open-btn {
+            border: none;
+            padding: 15px 35px;
+
+            border-radius: 40px;
+
+            background: white;
+            color: #ff5c9a;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.15);
+
+            transition: .3s;
+        }
+
+        .open-btn:hover {
+            transform: scale(1.08);
+        }
+
+
+        /* =========================
+           MAIN CONTENT
+        ========================== */
+
+        #main {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 40px 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 650px;
+
+            background: rgba(255,255,255,.55);
+
+            backdrop-filter: blur(15px);
+
+            border-radius: 30px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.15);
+        }
+
+
+        /* =========================
+           TITLE
+        ========================== */
+
+        .cake {
+            font-size: 70px;
+
+            animation:
+                bounce 1.5s infinite;
+        }
+
+        h1 {
+            color: #ff4f91;
+
+            font-size: 45px;
+
+            margin-top: 10px;
+
+            text-shadow:
+                2px 2px white;
+        }
+
+        .name {
+            font-size: 35px;
+
+            color: #7745a8;
+
+            margin-top: 10px;
+
+            min-height: 45px;
+        }
+
+
+        /* =========================
+           PHOTO
+        ========================== */
+
+        .photo-container {
+            margin: 25px auto;
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            border: 7px solid white;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,.15);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================== */
+
+        .message {
+            font-size: 17px;
+
+            line-height: 1.8;
+
+            margin: 20px auto;
+
+            max-width: 530px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .gift-btn {
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 40px;
+
+            background: #ff5c9a;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .3s;
+
+            box-shadow:
+                0 8px 20px rgba(255,92,154,.3);
+        }
+
+        .gift-btn:hover {
+            transform: scale(1.08);
+
+            background: #ff397f;
+        }
+
+
+        /* =========================
+           SECRET MESSAGE
+        ========================== */
+
+        #secret {
+            display: none;
+
+            margin-top: 30px;
+
+            padding: 25px;
+
+            background: rgba(255,255,255,.6);
+
+            border-radius: 20px;
+
+            line-height: 1.8;
+
+            animation:
+                fadeIn 1s ease;
+        }
+
+        #secret h2 {
+            color: #ff4f91;
+
+            margin-bottom: 15px;
+        }
+
+
+        /* =========================
+           FLOATING HEART
+        ========================== */
+
+        .heart {
+            position: fixed;
+
+            bottom: -30px;
+
+            font-size: 25px;
+
+            pointer-events: none;
+
+            animation:
+                floatUp 6s linear forwards;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================== */
+
+        @keyframes bounce {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes floatUp {
+
+            from {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            to {
+                transform:
+                    translateY(-110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            .opening-box h1 {
+                font-size: 32px;
+            }
+
+            h1 {
+                font-size: 35px;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .photo-container {
+                width: 180px;
+                height: 180px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         OPENING
+    ========================== -->
+
+    <section id="opening">
+
+        <div class="opening-box">
+
+            <h1>Hey, Cilma! 💗</h1>
+
+            <p>
+                I made something special for you...
+            </p>
+
+            <button
+                class="open-btn"
+                onclick="openBirthday()">
+
+                Open Your Gift 🎁
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main id="main">
+
+        <div class="card">
+
+
+            <div class="cake">
+                🎂
+            </div>
+
+
+            <h1>
+                Happy Birthday!
+            </h1>
+
+
+            <div class="name" id="typing">
+            </div>
+
+
+
+            <!-- FOTO -->
+
+            <div class="photo-container">
+
+                <!--
+                    GANTI "cilma.jpg"
+                    dengan nama file fotomu
+                -->
+
+                <img
+                    src="c:\Users\Lenovo\Downloads\cielma.jpeg"
+                    alt="Cilma">
+
+            </div>
+
+
+
+            <!-- UCAPAN -->
+
+            <p class="message">
+
+                Today is a special day because
+                someone very special was born. 💗
+
+                <br><br>
+
+                Happy birthday, Cilma! 🥳
+
+                <br><br>
+
+                I hope this new chapter of your life
+                is filled with happiness, good memories,
+                exciting adventures, and people who
+                genuinely care about you.
+
+                <br><br>
+
+                May all the little things you've been
+                wishing for slowly become reality.
+
+                <br><br>
+
+                Keep smiling, keep dreaming,
+                and keep being the amazing person
+                that you are. 🌷
+
+            </p>
+
+
+
+            <!-- BUTTON -->
+
+            <button
+                class="gift-btn"
+                onclick="showSecret()">
+
+                There's one more thing... 💌
+
+            </button>
+
+
+
+            <!-- SECRET -->
+
+            <div id="secret">
+
+                <h2>
+                    A Little Message For You 💗
+                </h2>
+
+                <p>
+
+                    Cilma,
+
+                    <br><br>
+
+                    I just want you to know that
+                    you deserve all the happiness
+                    that life can give.
+
+                    <br><br>
+
+                    Whatever happens in the future,
+                    I hope you always remember
+                    how precious you are to the people
+                    around you.
+
+                    <br><br>
+
+                    Enjoy your day,
+                    make lots of memories,
+                    eat lots of cake 🎂,
+                    and don't forget to smile!
+
+                    <br><br>
+
+                    Once again...
+
+                    <br><br>
+
+                    <strong>
+                        HAPPY BIRTHDAY, CILMA! 🎉💗
+                    </strong>
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =========================
+         MUSIC
+    ========================== -->
+
+    <!--
+        OPTIONAL:
+
+        Kalau mau musik,
+        masukkan file "birthday.mp3"
+        ke folder yang sama.
+
+        Lalu hapus tanda <!-- dan -->
+    -->
+
+    <--
+    <audio
+        id="music"
+        src="c:\Users\Lenovo\Downloads\Sempurna Andra and The Backbone (KARAOKE AKUSTIK - ORIGINAL KEY).mp3"
+        loop>
+    </audio>
+    -->
+
+
+
+    <script>
+
+        /* =========================
+           OPEN BIRTHDAY
+        ========================== */
+
+        function openBirthday() {
+
+            const opening =
+                document.getElementById("opening");
+
+            opening.style.opacity = "0";
+
+            setTimeout(() => {
+
+                opening.style.display = "none";
+
+            }, 1000);
+
+
+            /* mulai typing */
+
+            typeName();
+
+
+            /* confetti */
+
+            createConfetti();
+
+
+            /* musik kalau digunakan */
+
+            const music =
+                document.getElementById("music");
+
+            if (music) {
+
+                music.play().catch(() => {});
+
+            }
+
+        }
+
+
+
+        /* =========================
+           TYPING EFFECT
+        ========================== */
+
+        function typeName() {
+
+            const text =
+                "✨ Cilma ✨";
+
+            const element =
+                document.getElementById("typing");
+
+            let index = 0;
+
+            function type() {
+
+                if (index < text.length) {
+
+                    element.innerHTML +=
+                        text.charAt(index);
+
+                    index++;
+
+                    setTimeout(type, 150);
+
+                }
+
+            }
+
+            type();
+
+        }
+
+
+
+        /* =========================
+           SECRET MESSAGE
+        ========================== */
+
+        function showSecret() {
+
+            const secret =
+                document.getElementById("secret");
+
+            secret.style.display = "block";
+
+            createConfetti();
+
+        }
+
+
+
+        /* =========================
+           CONFETTI
+        ========================== */
+
+        function createConfetti() {
+
+            const emojis = [
+                "🎉",
+                "🎊",
+                "💗",
+                "✨",
+                "🌸",
+                "🎂",
+                "💖"
+            ];
+
+
+            for (let i = 0; i < 60; i++) {
+
+                const item =
+                    document.createElement("div");
+
+                item.innerHTML =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+
+                item.style.position =
+                    "fixed";
+
+                item.style.left =
+                    Math.random() * 100 + "vw";
+
+                item.style.top =
+                    "-30px";
+
+                item.style.fontSize =
+                    Math.random() * 20 + 15 + "px";
+
+                item.style.zIndex = "9999";
+
+                item.style.transition =
+                    "transform 3s linear, opacity 3s";
+
+
+                document.body.appendChild(item);
+
+
+                setTimeout(() => {
+
+                    item.style.transform =
+                        `translateY(110vh)
+                         rotate(${Math.random() * 720}deg)`;
+
+                    item.style.opacity = "0";
+
+                }, 100);
+
+
+                setTimeout(() => {
+
+                    item.remove();
+
+                }, 3500);
+
+            }
+
+        }
+
+
+
+        /* =========================
+           FLOATING HEART
+        ========================== */
+
+        setInterval(() => {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML =
+                Math.random() > .5
+                ? "💗"
+                : "💕";
+
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+
+            heart.style.fontSize =
+                Math.random() * 20 + 15 + "px";
+
+
+            heart.style.animationDuration =
+                Math.random() * 3 + 4 + "s";
+
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 7000);
+
+        }, 700);
+
+    </script>
+
+
+</body>
+</html>
+```
